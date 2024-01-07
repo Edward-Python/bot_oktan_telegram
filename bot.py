@@ -1,29 +1,30 @@
 import asyncio
 import logging
 
-from aiogram import Bot, Dispatcher, types
-from aiogram.filters.command import Command
+from aiogram import Bot, Dispatcher
 
 from app import conf
+from app import handlers
 
 
-bot = Bot(token=conf.token.get_secret_value())
-dp = Dispatcher()
-
-
-@dp.message(Command("start"))
-async def cmd_start(message: types.Message):
-    await message.answer("Hello!")
-
-
-async def main():
-    await dp.start_polling(bot)
-
+class BotRun:
+        
+    async def main(self):
+        bot = Bot(token=conf.token.get_secret_value())
+        dp = Dispatcher()
+        dp.include_router(handlers.router)
+        # удаляет команды (когда откл.бот)
+        await bot.delete_webhook(drop_pending_updates=True)
+        await dp.start_polling(bot)
+        
 
 if __name__ == "__main__":
+    bot_run = BotRun()
     logging.basicConfig(level=logging.INFO)
     try:
-        asyncio.run(main())
+        print("\nБот начал работу!\n")
+        asyncio.run(bot_run.main())
     except:
-        print("Бот завершил работу!")
+        print('========================')
+        print("\nБот завершил работу!\n")
         KeyboardInterrupt()

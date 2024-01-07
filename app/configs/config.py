@@ -4,8 +4,9 @@ from dotenv import load_dotenv
 
 
 class Settings(BaseSettings):
-    load_dotenv()
     token: SecretStr
+    
+    load_dotenv()
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding='utf-8')
 
 
