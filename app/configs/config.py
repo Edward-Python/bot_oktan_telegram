@@ -1,5 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr
+
 from dotenv import load_dotenv
 
 
