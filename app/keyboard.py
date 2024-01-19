@@ -7,29 +7,42 @@ from app.messages import TECHNICAL_SERVICE, TIRE_FITTING,\
 ############### Обычные кнопки при старте ###############
 
 class MainKeyboard:
-      kb = [[KeyboardButton(text="список работ"),
-            KeyboardButton(text="магазин запчастей"),
-            KeyboardButton(text="мастера")]]
+      kb = [[KeyboardButton(text='ВОЙТИ')]]
+            #  KeyboardButton(text="МАГАЗИН ЗАПЧАСТЕЙ"),
+            #  KeyboardButton(text="МАСТЕРА")]]
       setting_kb = ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True,
+                                          input_field_placeholder="СТО Октан")
+      
+
+class MenuMainKeyboard:
+      mkb = [[KeyboardButton(text="ЗАПИСАТЬСЯ")],\
+            #   KeyboardButton(text=THE_COLLAPSE_OF_CONVERGENCE)],
+            #  [KeyboardButton(text=TECHNICAL_SERVICE),\
+            #   KeyboardButton(text=COMPLEX_REPAIRS)],
+             [KeyboardButton(text="назад")]]
+      setting_mkb = ReplyKeyboardMarkup(keyboard=mkb, resize_keyboard=True,
+                                          input_field_placeholder="СТО Окта")
+      
+
+class MenuMaster:
+      mmkb = [[KeyboardButton(text="назад")]]
+      setting_mmkb = ReplyKeyboardMarkup(keyboard=mmkb, resize_keyboard=True,
                                           input_field_placeholder="СТО Окта")
 
-############### Инлайн подкнопки выбор ###############
 
-class InlineMainKeyboard:
-      ikb = [[InlineKeyboardButton(text=TIRE_FITTING,\
-                                   callback_data="tire_fitting")],
-             [InlineKeyboardButton(text=THE_COLLAPSE_OF_CONVERGENCE,\
-                                   callback_data="the_collapse_of_convergence")],
-             [InlineKeyboardButton(text=TECHNICAL_SERVICE,\
-                                   callback_data='technical_service')],
-             [InlineKeyboardButton(text=COMPLEX_REPAIRS,\
-                                   callback_data="complex_repairs")]]
-            #  [InlineKeyboardButton(text="назад")]]
-      setting_ikb = InlineKeyboardMarkup(inline_keyboard=ikb)
+############### Инлайн подкнопки Шиномонтаж ###############
+
+class InlineKeyboardSignUp:
+      ikbsu = [[InlineKeyboardButton(text="Записаться",\
+                                   callback_data="sign up")]]
+      setting_ikbsu = InlineKeyboardMarkup(inline_keyboard=ikbsu)
 
 
 ############## Запуск клавиатур ##############
 
 main_keyboard = MainKeyboard()
-ikb_main_keyboard = InlineMainKeyboard()
+# ikb_main_keyboard = InlineMainKeyboard()
+mkb_main_keyboard = MenuMainKeyboard()
+menu_master = MenuMaster()
+inline_keyboard_sign_up = InlineKeyboardSignUp()
       

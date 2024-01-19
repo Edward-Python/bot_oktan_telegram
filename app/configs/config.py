@@ -12,6 +12,3 @@ class Settings(BaseSettings):
 
 
 conf = Settings()
-
-
-SQDALCGEMY_URL="sqlite+pysqlite:///cto_oktan.db"
