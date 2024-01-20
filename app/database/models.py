@@ -5,7 +5,6 @@ class OktanBD:
     def __init__(self) -> None:
         self.db = sqlite3.connect("sto_oktan.db")
         self.cur = self.db.cursor()
-
         self.cur.execute("""
         CREATE TABLE IF NOT EXISTS data_table (
                 id INTEGER PRIMARY KEY NOT NULL,
